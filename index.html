@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stir & Simmer | Real Recipes for UK Home Cooks</title>
+    <meta name="description" content="Tried-and-tested recipes for UK home cooks. No cheffy techniques, no obscure ingredients — just honest food that works. Grams, Celsius, supermarket ingredients.">
+    <meta name="author" content="Stir & Simmer" />
+    <meta name="google-site-verification" content="pnnjNOShptmR1bVZIthOLf6n4TJp7qvu-j-3xFo7iPk" />
+    <link rel="canonical" href="https://stirandsimmer.co.uk/" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <!-- Supabase REST API preconnect (CORS for the recipes query). -->
+    <link rel="preconnect" href="https://xlekynbjvcfbfqycjnpj.supabase.co" crossorigin />
+    <!-- LCP hero is self-hosted (same origin as the HTML). Same-origin
+         WebP at ~63 KiB reuses the open HTML connection and avoids the
+         third-party DNS+TLS+image-render hop that was costing ~1.5 s of
+         LCP "element render delay" on Slow 4G. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/hero/hero-768.webp"
+      imagesrcset="/hero/hero-480.webp 480w, /hero/hero-768.webp 768w, /hero/hero-1024.webp 1024w, /hero/hero-1280.webp 1280w, /hero/hero-1600.webp 1600w"
+      imagesizes="100vw"
+      fetchpriority="high"
+      type="image/webp"
+    />
+    <!-- Self-hosted DM Sans. Preload the latin upright weight (used by 95% of
+         body copy) so it starts downloading immediately, with no extra DNS /
+         CSS round-trip via Google Fonts. The full @font-face declarations
+         live in the inline <style> below so they can't be blocked or deferred. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dmsans-latin.woff2" crossorigin />
+    <style>
+      /* DM Sans — self-hosted variable cuts (Google v17). Splitting on
+         unicode-range so non-Latin pages only download what they need. */
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400 600;
+        font-display: swap;
+        src: url('/fonts/dmsans-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400 600;
+        font-display: swap;
+        src: url('/fonts/dmsans-latin-ext.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/dmsans-latin-italic.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/dmsans-latin-ext-italic.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* LCP hero bootstrap — inserted by prerender for the homepage.
+         z-index:0 is important: Chrome's LCP heuristic ignores candidates
+         with negative z-index ("not visible to user"). Sitting at z:0 with
+         the overlay at z:1 and the React text at z:10 keeps the visual
+         identical to the React-rendered hero. The bootstrap stays mounted
+         for the lifetime of the page — Index.tsx detects it and skips
+         rendering its own <img>, so the LCP element never changes. */
+      #lcp-hero { position: fixed; inset: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 0; background: #1a1614; }
+      #lcp-hero-overlay { position: fixed; inset: 0; z-index: 1; background: rgba(0,0,0,0.6); pointer-events: none; }
+      /* Once the user scrolls past the hero (h-screen + the -5rem margin),
+         the bootstrap should not block the dark sections below. We dismiss
+         it via a `.lcp-hero-dismissed` class added by Index.tsx after
+         hydration so React's own layout takes over for scroll regions. */
+      .lcp-hero-dismissed #lcp-hero,
+      .lcp-hero-dismissed #lcp-hero-overlay { position: absolute; height: 100vh; }
+    </style>
+    <!-- Boska (display headings) — kept on Fontshare with async-swap load.
+         Headings paint with a metric-matched Georgia fallback first, then
+         swap to Boska. The fallback @font-face below uses size-adjust and
+         ascent/descent-overrides tuned to Boska's metrics so the swap does
+         not shift layout (eliminates the remaining CLS Lighthouse flagged). -->
+    <style>
+      /* "Boska Fallback" — local Georgia re-shaped to Boska's box.
+         Boska (Indian Type Foundry): upem 1000, ascent 1000, descent 250,
+         x-height ~480 → x-height ratio ~0.480.
+         Georgia: x-height ratio ~0.481, so size-adjust stays near 100%.
+         Tuned empirically to minimise heading reflow on swap. */
+      @font-face {
+        font-family: 'Boska Fallback';
+        src: local('Georgia'), local('Times New Roman'), local('Times');
+        font-weight: 400 700;
+        font-style: normal;
+        size-adjust: 100%;
+        ascent-override: 100%;
+        descent-override: 25%;
+        line-gap-override: 0%;
+      }
+      @font-face {
+        font-family: 'Boska Fallback';
+        src: local('Georgia Italic'), local('Georgia'), local('Times New Roman Italic'), local('Times');
+        font-weight: 400 700;
+        font-style: italic;
+        size-adjust: 100%;
+        ascent-override: 100%;
+        descent-override: 25%;
+        line-gap-override: 0%;
+      }
+    </style>
+    <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=boska@400,500,700,400i,500i,700i&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=boska@400,500,700,400i,500i,700i&display=swap" />
+    </noscript>
+    <meta property="og:url" content="https://stirandsimmer.co.uk/" />
+
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://stirandsimmer.co.uk/og-image.jpg">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@StirAndSimmer" />
+    <meta name="twitter:creator" content="@StirAndSimmer" />
+    <meta name="twitter:image" content="https://stirandsimmer.co.uk/og-image.jpg">
+    <meta property="og:title" content="Stir & Simmer | Real Recipes for UK Home Cooks">
+  <meta name="twitter:title" content="Stir & Simmer | Real Recipes for UK Home Cooks">
+  <meta property="og:description" content="Tried-and-tested recipes for UK home cooks. No cheffy techniques, no obscure ingredients — just honest food that works. Grams, Celsius, supermarket ingredients.">
+  <meta name="twitter:description" content="Tried-and-tested recipes for UK home cooks. No cheffy techniques, no obscure ingredients — just honest food that works. Grams, Celsius, supermarket ingredients.">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

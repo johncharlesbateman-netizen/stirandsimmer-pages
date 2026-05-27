@@ -1,0 +1,23 @@
+UPDATE public.recipes SET instructions = '[
+"Place the marrowfat peas in a bowl and cover with 850ml boiling water, then add the tablets provided within the pack.",
+"Leave to soak overnight.",
+"Rinse the chips in cold water until it runs clear, then pat very dry.",
+"Heat oil in a deep fat fryer to 140°C.",
+"Fry the chips for 6–8 minutes until soft but not coloured.",
+"Lift out and drain on kitchen paper.",
+"Drain the marrowfat peas and rinse under running cold water.",
+"Add to a pan and cover with 600ml boiling water.",
+"Bring to the boil and cook for around 20–25 minutes over a gentle heat, stirring regularly to prevent the mixture catching in the pan.",
+"When the peas are at the desired consistency, add the mint sauce/jelly.",
+"Make the batter: whisk the 100g flour, cornflour, baking powder and salt in a bowl.",
+"Pour in the cold lager or cider and whisk briefly to a smooth, thickish batter.",
+"Rest the batter while the oil comes up to temperature.",
+"Increase the oil to 190°C.",
+"Pat the cod dry, season and dust with the extra 2 tbsp flour.",
+"Dip each fillet into the batter, let the excess drip off, then lower carefully into the oil.",
+"Fry for 5–6 minutes until deep golden and crisp.",
+"Drain on kitchen paper.",
+"Return the chips to the 190°C oil and fry for a final 2–3 minutes until crisp and golden.",
+"Season with sea salt flakes.",
+"Serve straight away with the mushy peas and lemon wedges on the side."
+]'::jsonb WHERE slug = 'fish-and-chips-with-mushy-peas';

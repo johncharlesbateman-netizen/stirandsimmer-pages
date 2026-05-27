@@ -1,0 +1,568 @@
+/* Font stylesheets are loaded via <link> tags in index.html for parallel,
+   non-render-blocking delivery (improves FCP/LCP). */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Food Photographer Portfolio — Editorial Design System
+   All colors are HSL for theming consistency
+*/
+
+@layer base {
+  :root {
+    /* Off-white warm background */
+    --background: 36 33% 97%;
+    --foreground: 0 0% 17%;
+
+    /* Cards with subtle warmth */
+    --card: 36 33% 97%;
+    --card-foreground: 0 0% 17%;
+
+    --popover: 36 33% 97%;
+    --popover-foreground: 0 0% 17%;
+
+    /* Charcoal primary */
+    --primary: 0 0% 17%;
+    --primary-foreground: 36 33% 97%;
+
+    /* Warm cream secondary */
+    --secondary: 36 20% 92%;
+    --secondary-foreground: 0 0% 17%;
+
+    /* Muted tones */
+    --muted: 36 15% 90%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Terracotta accent */
+    --accent: 16 45% 55%;
+    --accent-foreground: 36 33% 97%;
+
+    /* Earthy tones */
+    --terracotta: 16 45% 55%;
+    --olive: 82 25% 40%;
+    --wine: 345 35% 35%;
+
+    /* Meal planner green */
+    --planner: 145 40% 28%;
+    --planner-foreground: 36 33% 97%;
+    --planner-soft: 145 30% 92%;
+    --planner-accent: 145 50% 40%;
+
+    /* Warm dark brand palette (used by footer, hero CTAs, guide pages) */
+    --warm-dark: 33 33% 13%;            /* ≈ #2C2416 */
+    --warm-dark-foreground: 36 58% 91%; /* ≈ #F5EAD8 */
+    --warm-cream: 36 58% 91%;           /* ≈ #F5EAD8 */
+    --warm-cream-muted: 36 39% 76%;     /* ≈ #D9C7A8 — body text on warm dark */
+    --warm-amber: 32 68% 61%;           /* ≈ #E0A558 — accent on warm dark */
+    --warm-soft: 33 85% 95%;            /* ≈ #FDF3E7 — callout/light surface */
+
+    /* Kitchen Atlas map chrome (warm earth palette, paired with warm-amber accent) */
+    --atlas-map-bg: 30 49% 24%;          /* ≈ #5a3a1f — outer map frame */
+    --atlas-map-surface: 28 47% 19%;     /* ≈ #46301a — inner map surface */
+    --atlas-map-land: 26 57% 15%;        /* ≈ #3a2410 — land silhouette fill */
+    --atlas-map-land-stroke: 31 58% 23%; /* ≈ #5a3a18 — land silhouette stroke */
+    --atlas-marker: 32 77% 45%;          /* ≈ #C97B1A — pulse marker (darker warm-amber) */
+
+    /* Kitchen Atlas region accents (used as card border-top / section border-left) */
+    --region-uk: 209 56% 23%;            /* ≈ #1a3a5c */
+    --region-italy: 11 53% 36%;          /* ≈ #8B3A2A */
+    --region-france: 222 65% 29%;        /* ≈ #1a3a7c */
+    --region-spain: 28 78% 42%;          /* ≈ #c0691a — paprika/saffron */
+    --region-india: 326 56% 23%;         /* ≈ #5c1a3a */
+    --region-thailand: 160 50% 28%;      /* teal-green */
+    --region-greece: 205 70% 38%;        /* aegean blue */
+    --region-mediterranean: 190 55% 35%; /* sea blue-green */
+    --region-middleeast: 35 55% 35%;     /* spice amber */
+    --region-japan: 0 65% 29%;           /* ≈ #7c1a1a */
+    --region-mexico: 132 56% 23%;        /* ≈ #1a5c2a */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 15% 85%;
+    --input: 36 15% 85%;
+    --ring: 0 0% 17%;
+
+    --radius: 0.25rem;
+
+    /* Sidebar */
+    --sidebar-background: 36 33% 97%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 0 0% 17%;
+    --sidebar-primary-foreground: 36 33% 97%;
+    --sidebar-accent: 36 20% 92%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 36 15% 85%;
+    --sidebar-ring: 0 0% 17%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 36 33% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 36 33% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 36 33% 95%;
+
+    --primary: 36 33% 95%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 36 33% 95%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 36 15% 60%;
+
+    --accent: 16 45% 55%;
+    --accent-foreground: 36 33% 97%;
+
+    --terracotta: 16 45% 55%;
+    --olive: 82 25% 50%;
+    --wine: 345 35% 45%;
+
+    --planner: 145 40% 35%;
+    --planner-foreground: 36 33% 97%;
+    --planner-soft: 145 25% 18%;
+    --planner-accent: 145 50% 50%;
+
+    /* Warm dark brand palette — identical in both themes (brand identity) */
+    --warm-dark: 33 33% 13%;
+    --warm-dark-foreground: 36 58% 91%;
+    --warm-cream: 36 58% 91%;
+    --warm-cream-muted: 36 39% 76%;
+    --warm-amber: 32 68% 61%;
+    --warm-soft: 33 85% 95%;
+
+    --atlas-map-bg: 30 49% 24%;
+    --atlas-map-surface: 28 47% 19%;
+    --atlas-map-land: 26 57% 15%;
+    --atlas-map-land-stroke: 31 58% 23%;
+    --atlas-marker: 32 77% 45%;
+
+    --region-uk: 209 56% 23%;
+    --region-italy: 11 53% 36%;
+    --region-france: 222 65% 29%;
+    --region-spain: 28 78% 42%;
+    --region-india: 326 56% 23%;
+    --region-thailand: 160 50% 28%;
+    --region-greece: 205 70% 38%;
+    --region-mediterranean: 190 55% 35%;
+    --region-middleeast: 35 55% 35%;
+    --region-japan: 0 65% 29%;
+    --region-mexico: 132 56% 23%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 36 33% 95%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 36 33% 95%;
+    --sidebar-primary: 36 33% 95%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 36 33% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 36 33% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    font-size: 16px;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Boska', 'Boska Fallback', Georgia, serif;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  a, button {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  section {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      @apply animate-fade-in;
+    }
+  }
+
+  @media (max-width: 767px), (prefers-reduced-motion: reduce) {
+    section {
+      animation: none !important;
+    }
+  }
+
+  /* Images with smooth loading */
+  img {
+    @apply transition-opacity duration-500 ease-out;
+  }
+}
+
+@layer components {
+  /* Editorial micro-caption style */
+  .micro-caption {
+    @apply text-xs tracking-wider uppercase text-muted-foreground;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  /* Elegant link underline animation */
+  .editorial-link {
+    @apply relative inline-block;
+  }
+
+  .editorial-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-foreground origin-bottom-right transition-transform duration-500 ease-out scale-x-0;
+  }
+
+  .editorial-link:hover::after {
+    @apply origin-bottom-left scale-x-100;
+  }
+
+  /* Image with editorial treatment */
+  .editorial-image {
+    @apply transition-all duration-700 ease-out;
+  }
+
+  .editorial-image:hover {
+    @apply scale-[1.02];
+  }
+
+  /* Gentle hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Subtle text reveal on hover */
+  .text-reveal {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .text-reveal:hover {
+    @apply tracking-wide;
+  }
+
+  /* Smooth button interactions */
+  .btn-smooth {
+    @apply relative overflow-hidden transition-all duration-500 ease-out;
+  }
+
+  .btn-smooth::before {
+    content: '';
+    @apply absolute inset-0 bg-foreground/5 translate-y-full transition-transform duration-500 ease-out;
+  }
+
+  .btn-smooth:hover::before {
+    @apply translate-y-0;
+  }
+
+  /* Fade up on scroll placeholder */
+  .fade-up {
+    @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
+  }
+
+  .fade-up.visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@layer utilities {
+  /* Floating animation - like floating on water */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  .floating-item {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-item-delay-1 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+  
+  .floating-item-delay-2 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  
+  .floating-item-delay-3 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  
+  .floating-item-delay-4 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  .floating-item-delay-5 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2.5s;
+  }
+
+  /* Large editorial headings — capped per design spec */
+  .heading-display {
+    font-family: 'Boska', 'Boska Fallback', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3rem); /* 32px → 48px */
+    @apply font-medium tracking-tight leading-tight;
+  }
+
+  .heading-editorial {
+    font-family: 'Boska', 'Boska Fallback', Georgia, serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem); /* 24px → 32px */
+    @apply font-medium tracking-tight leading-tight;
+  }
+
+  .heading-section {
+    font-family: 'Boska', 'Boska Fallback', Georgia, serif;
+    font-size: clamp(1.25rem, 3vw, 1.75rem); /* 20px → 28px */
+    @apply font-medium leading-snug;
+  }
+
+  /* Body text styles */
+  .body-editorial {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem; /* 16px */
+    @apply leading-relaxed;
+  }
+
+  /* Breathing space */
+  .section-breathing {
+    @apply py-20 md:py-32 lg:py-40;
+  }
+}
+
+/* Print-friendly recipe card */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the print card and its descendants */
+  .print-recipe-card,
+  .print-recipe-card * {
+    visibility: visible;
+  }
+
+  .print-recipe-card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide controls inside the printable area */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  .print-recipe-card .print-title {
+    font-family: 'Boska', 'Boska Fallback', Georgia, serif;
+    font-size: 24pt;
+    margin: 0 0 8pt 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    color: black;
+  }
+
+  .print-recipe-card .print-description {
+    font-size: 11pt;
+    margin: 0 0 12pt 0;
+    color: #333;
+  }
+
+  .print-recipe-card .print-image {
+    width: 100%;
+    max-height: 90mm;
+    object-fit: cover;
+    margin-bottom: 12pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Hide image when print-no-image flag is set on the card */
+  .print-recipe-card.print-no-image .print-image {
+    display: none !important;
+  }
+
+  .print-recipe-card .print-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16pt;
+    padding: 8pt 0;
+    border-top: 1pt solid #999;
+    border-bottom: 1pt solid #999;
+    margin-bottom: 14pt;
+    font-size: 10pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-recipe-card .print-meta strong {
+    display: block;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 2pt;
+  }
+
+  .print-recipe-card h2 {
+    font-family: 'Boska', 'Boska Fallback', Georgia, serif;
+    font-size: 14pt;
+    margin: 14pt 0 8pt 0;
+    padding-bottom: 4pt;
+    border-bottom: 1pt solid #ccc;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Keep each section together where possible */
+  .print-recipe-card .print-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-recipe-card .print-ingredients {
+    list-style: disc;
+    padding-left: 18pt;
+    margin: 0 0 12pt 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-recipe-card .print-ingredients li {
+    margin-bottom: 4pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-recipe-card .print-instructions {
+    list-style: decimal;
+    padding-left: 18pt;
+    margin: 0;
+  }
+
+  .print-recipe-card .print-instructions li {
+    margin-bottom: 8pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-recipe-card .print-qr {
+    margin-top: 18pt;
+    padding-top: 12pt;
+    border-top: 0.5pt solid #ccc;
+    display: flex;
+    align-items: center;
+    gap: 12pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-recipe-card .print-qr img {
+    width: 25mm;
+    height: 25mm;
+  }
+
+  .print-recipe-card .print-qr p {
+    margin: 0;
+    font-size: 9pt;
+    color: #333;
+  }
+
+  .print-recipe-card .print-qr p span {
+    display: block;
+    font-size: 8pt;
+    color: #666;
+    margin-top: 2pt;
+    word-break: break-all;
+  }
+
+  .print-recipe-card .print-footer {
+    position: fixed;
+    bottom: 5mm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 8pt;
+    color: #666;
+    border-top: 0.5pt solid #ccc;
+    padding-top: 4pt;
+  }
+}
+
+/* Hide print-only block on screen */
+.print-recipe-card {
+  display: none;
+}
+@media print {
+  .print-recipe-card {
+    display: block;
+  }
+}

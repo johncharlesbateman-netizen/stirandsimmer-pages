@@ -1,0 +1,1 @@
+UPDATE public.recipes SET cuisine_region = ARRAY(SELECT DISTINCT unnest(cuisine_region || ARRAY['mexican'])) WHERE slug = 'battered-prawn-tacos';

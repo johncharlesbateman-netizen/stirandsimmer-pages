@@ -1,0 +1,13 @@
+# Cloudflare Pages redirects / SPA fallback.
+#
+# Pages serves static files first: an exact match, then `<path>/index.html`,
+# then `<path>.html`. Our prerender writes BOTH `dist/recipes/<slug>/index.html`
+# and `dist/recipes/<slug>.html` so clean URLs resolve to the prerendered file
+# without any rewrite needed — Googlebot sees the per-route <title>, meta and
+# Recipe JSON-LD in the initial HTML response.
+#
+# Only routes that DON'T have a prerendered file (dynamic admin pages, auth,
+# 404s, etc.) fall through to this rule and load the React SPA shell. The 200
+# status code is required so the SPA route handler can take over client-side.
+
+/*  /index.html  200

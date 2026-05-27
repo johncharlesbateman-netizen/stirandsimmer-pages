@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /auth
+
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://stirandsimmer.co.uk/sitemap.xml

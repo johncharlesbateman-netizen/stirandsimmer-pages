@@ -1,0 +1,2 @@
+ALTER TABLE public.recipes
+  ADD COLUMN IF NOT EXISTS meal_types TEXT[] NOT NULL DEFAULT ARRAY[]::TEXT[];

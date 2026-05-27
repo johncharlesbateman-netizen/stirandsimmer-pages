@@ -1,0 +1,5 @@
+UPDATE public.recipes
+SET
+  instructions = '["Heat a Grill until hot and the oven to 180 Degrees C", "For the Lamb", "Drizzle over a little Olive Oil and place in the oven for 10 minutes", "Leave to rest for 8-10 Minutes before serving", "For the Vegetables", "Put the Onions under the Grill for 3-4 minutes and then turn", "Place the Courgettes and Figs on the Grill and cook until charred", "To make the Dressing", "Whisk all the ingredients together.", "To Serve", "Slice the lamb.", "Spread the Tahini dressing all over a platter,", "Top with the roasted Vegetables, Cherry Tomatoes, Figs and sliced Lamb", "Then sprinkle over the Sesame Seeds, Pomegranate seeds and Herbs", "Finish with a drizzle of Olive Oil."]'::jsonb,
+  updated_at = now()
+WHERE slug = 'lamb-with-courgette-figs-beetroot-tomatoes-and-tahini-dressing';

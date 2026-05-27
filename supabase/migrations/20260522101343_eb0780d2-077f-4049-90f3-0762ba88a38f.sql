@@ -1,0 +1,1 @@
+UPDATE recipes SET ingredients = (SELECT jsonb_agg(CASE WHEN elem::text = '"**To Serve**"' THEN '"To Serve"'::jsonb ELSE elem END) FROM jsonb_array_elements(ingredients) elem) WHERE title ILIKE '%Pork Meatballs%Thai%';

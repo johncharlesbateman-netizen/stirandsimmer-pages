@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "description": "Cloudflare Pages routing. This site is 100% static (Vite + prerendered HTML for every public route), so no requests need to invoke Pages Functions. Excluding everything from the function runtime makes every request a fast static-asset hit and keeps function invocations at zero.",
+  "include": ["/*"],
+  "exclude": ["/*"]
+}

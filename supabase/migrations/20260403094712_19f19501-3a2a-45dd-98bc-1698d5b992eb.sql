@@ -1,0 +1,1 @@
+UPDATE public.recipes SET instructions = REPLACE(instructions::text, 'both Tomatoes', 'the Tomatoes')::jsonb WHERE id = 'f4a2fbf1-2d02-4e83-942a-e3e29b731f28';
